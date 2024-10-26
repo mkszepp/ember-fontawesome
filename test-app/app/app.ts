@@ -21,7 +21,6 @@ import {
   faSync,
   faStopwatch20,
   faTrashAlt,
-  faCalendarXmark,
 } from '@fortawesome/free-solid-svg-icons';
 import * as freeRegularSvgIcons from '@fortawesome/free-regular-svg-icons';
 import * as freeBrandSvgIcons from '@fortawesome/free-brands-svg-icons';
@@ -43,7 +42,6 @@ library.add(
   faSync,
   faStopwatch20,
   faTrashAlt,
-  faCalendarXmark,
 );
 
 library.add(freeBrandSvgIcons['fab']);
