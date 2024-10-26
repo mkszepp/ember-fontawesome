@@ -10,8 +10,7 @@ Compatibility
 ------------------------------------------------------------------------------
 
 * Ember.js v4.4 or above
-* Ember CLI v4.4 or above
-* Node.js v14 or above
+- Embroider or ember-auto-import v2
 
 If you are using an older version of Ember, see [our 1.x branch](https://github.com/FortAwesome/ember-fontawesome/tree/1.x).
 
