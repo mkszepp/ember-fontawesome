@@ -100,6 +100,37 @@ or with Yarn
 $ yarn add --dev @fortawesome/free-solid-svg-icons
 ```
 
+After installation you need to setup Font Awesome in your `app.js/ts` by adding the setup section part like bellow.
+After these changes your app file should look something like:
+
+```ts
+import Application from '@ember/application';
+import Resolver from 'ember-resolver';
+import loadInitializers from 'ember-load-initializers';
+import config from 'app-name/config/environment';
+
+// Start - Font Awesome setup
+import { library, config as faConfig } from '@fortawesome/fontawesome-svg-core';
+import '@fortawesome/fontawesome-svg-core/styles.css'; // This adds the basic icon styles into your app
+import * as freeSolidIcons from '@fortawesome/free-solid-svg-icons';
+
+// Disable auto CSS import into head. It solved the side effect for jumping icon size.
+// This is required to for Fastboot apps, otherwise build failes
+// The recommended way for setup Font Awesome in your app
+faConfig.autoAddCss = false;
+
+library.add(freeSolidIcons['fas']); // option to import all icons from solid pack. If you want to import only a subset of icons from pack, see section "Subsetting icons"
+// End - Font Awesome setup
+
+export default class App extends Application {
+  modulePrefix = config.modulePrefix;
+  podModulePrefix = config.podModulePrefix;
+  Resolver = Resolver;
+}
+
+loadInitializers(App, config.modulePrefix);
+```
+
 ### Add more styles or Pro icons
 
 Brands are separated into their own style and for customers upgrading from
@@ -113,8 +144,7 @@ $ npm i --save-dev @fortawesome/free-regular-svg-icons
 ```
 
 Do this for each icon pack you'll use in your app. By default, all installed
-icon packs will be bundled into `vendor.js` and also added to the Font Awesome
-library (i.e. `library.add()`)
+icon packs will be bundled into `vendor.js`.
 
 If you are a [Font Awesome Pro](https://fontawesome.com/pro) subscriber you can install Pro packages.
 
