@@ -116,10 +116,12 @@ import * as freeSolidIcons from '@fortawesome/free-solid-svg-icons';
 
 // Disable auto CSS import into head. It solved the side effect for jumping icon size.
 // This is required to for Fastboot apps, otherwise build failes
-// The recommended way for setup Font Awesome in your app
+// It's the recommended way for setup Font Awesome in your app
 faConfig.autoAddCss = false;
 
-library.add(freeSolidIcons['fas']); // option to import all icons from solid pack. If you want to import only a subset of icons from pack, see section "Subsetting icons"
+// option to import all icons from solid pack.
+// If you want to import only a subset of icons from pack, see section "Subsetting icons"
+library.add(freeSolidIcons['fas']);
 // End - Font Awesome setup
 
 export default class App extends Application {
@@ -159,59 +161,39 @@ Using the Pro packages requires [additional configuration](https://fontawesome.c
 
 ### Subsetting icons
 
-If you want to include only a subset of icons from an icon pack, add a
-`config/icons.js` file listing the icons you want to include.
+If you want to include only a subset of icons from an icon pack, you must import only the specific icons from pack and register them by using `libary.add()`.
+
 The following example declares that all icons in
-`free-solid-svg-icons` should be included build,
+`free-solid-svg-icons` should be included in build,
 and, only `adjust`, `ambulance`, and `pencil-alt` from `pro-light-svg-icons`
 are to be included.
 
-```js
-module.exports = function() {
-  return {
-    'free-solid-svg-icons': 'all',
-    'pro-light-svg-icons': [
-      'adjust',
-      'ambulance',
-      'pencil-alt'
-    ]
-  };
-};
-```
+```ts
+import * as freeSolidIcons from '@fortawesome/free-solid-svg-icons';
+import {
+  faAdjust,
+  faAmbulance,
+  faPencilAlt,
+} from '@fortawesome/pro-light-svg-icons';
 
-By default, `ember-fontawesome` will warn if no icons are being included
-in the build. To disable this behavior (e.g. if icons are being added by
-some other means), set `warnIfNoIconsIncluded` to `false`.
+library.add(freeSolidIcons['fas']);
 
-
-```js
-let ENV = {
-  fontawesome: {
-    warnIfNoIconsIncluded: false,
-    // ...
-  }
-};
+library.add(
+  faAdjust,
+  faAmbulance,
+  faPencilAlt,
+);
 ```
 
 ### Using within an addon
 
 If you want to use icons in your addon there are a few steps to take.
 
-First ensure `@fortawesome/ember-fontawesome` and any icon packs are in
-the `dependencies` section of your `package.json`. This makes them available
-to the apps that use your addon.
+First ensure `@fortawesome/ember-fontawesome`, `@fortawesome/fontawesome-svg-core` and any icon packs are in
+the `peerDependency` section of your `package.json`. This requires the consumer app to install the necessary packages.
 
-Second you need to declare what icons you are using so apps that subset icons
-will know what to include. You do this in `config/icons.js`. The format is:
-
-```js
-module.exports = function() {
-  return {
-    'free-solid-svg-icons': ['bacon', 'pencil'],
-    'free-brands-svg-icons': ['font-awesome-flag'],
-  };
-};
-```
+Second you need to declare in your setup documentation what icons you are using, so apps that subset icons
+will know what to include. You can do this like bringing import example as explained in section "Subsetting icons"
 
 You should avoid listing any Font Awesome Pro packages as dependencies unless you are confident that whoever is using your addon has access to those.
 
