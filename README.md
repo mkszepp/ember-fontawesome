@@ -9,14 +9,14 @@
 Compatibility
 ------------------------------------------------------------------------------
 
-* Ember.js v4.4 or above
+* Ember.js v3.28 or above
 - Embroider or ember-auto-import v2
 
 If you are using an older version of Ember, see [our 1.x branch](https://github.com/FortAwesome/ember-fontawesome/tree/1.x).
 
 ------------------------------------------------------------------------------
 
-> Font Awesome 5 Ember component using SVG with JS
+> Font Awesome Ember component using SVG with JS
 
 <!-- toc -->
 
@@ -52,21 +52,21 @@ Hey there! We're glad you're here...
 If you've used Font Awesome in the past (version 5 or older) there are some
 things that you should learn before you dive in.
 
-> https://fontawesome.com/v6/docs/web/setup/upgrading/
+> https://docs.fontawesome.com/web/setup/upgrade
 
 ### Get started
 
 This package is for integrating with Ember.js. If you aren't using Ember then it's
 not going to help you. Head over to our "Get Started" page for some guidance.
 
-> https://fontawesome.com/v6/docs/web/setup/quick-start
+> https://docs.fontawesome.com/web/setup/get-started
 
 ### Learn about our new SVG implementation
 
 This package, under the hood, uses SVG with JS and the `@fortawesome/fontawesome-svg-core` library. This implementation differs drastically from
 the web fonts implementation that was used in version 4 and older of Font Awesome. You might head over there to learn about how it works.
 
-> https://fontawesome.com/v6/docs/web/dig-deeper/svg-core
+> https://docs.fontawesome.com/web/dig-deeper/svg-core
 
 ### Upgrading From Previous Versions
 
@@ -79,13 +79,19 @@ You might also be interested in the larger umbrella project [UPGRADING.md](https
 This project is an Ember addon. So we'll add that first:
 
 ```
-$ ember install @fortawesome/ember-fontawesome
+$ ember install @fortawesome/ember-fontawesome @fortawesome/fontawesome-svg-core
 ```
 
 We need at least one style. Let's start with the free version of Solid.
 
 ```
 $ npm i --save-dev @fortawesome/free-solid-svg-icons
+```
+
+or with pnpm 
+
+```
+$ pnpm add -D @fortawesome/free-solid-svg-icons
 ```
 
 or with Yarn
