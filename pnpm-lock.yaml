@@ -200,7 +200,7 @@ importers:
         version: 4.0.0(@embroider/core@3.4.19(@glint/template@1.5.0))
       '@fortawesome/ember-fontawesome':
         specifier: workspace:*
-        version: link:../ember-fontawesome
+        version: file:ember-fontawesome(@fortawesome/fontawesome-svg-core@6.7.1)(@glimmer/component@2.0.0)(@glimmer/tracking@1.1.2)(ember-source@5.12.0(@glimmer/component@2.0.0)(@glint/template@1.5.0)(rsvp@4.8.5)(webpack@5.96.1))
       '@fortawesome/fontawesome-svg-core':
         specifier: ^6.7.1
         version: 6.7.1
@@ -423,6 +423,9 @@ importers:
       webpack:
         specifier: ^5.96.1
         version: 5.96.1
+    dependenciesMeta:
+      '@fortawesome/ember-fontawesome':
+        injected: true
 
 packages:
 
@@ -1119,6 +1122,14 @@ packages:
   '@eslint/js@8.57.1':
     resolution: {integrity: sha512-d9zaMRSTIKDLhctzH12MtXvJKSSUhaHcjV+2Z+GK+EEY7XKpP5yR4x+N3TAcHTcu963nIr+TMcCb4DBCYX1z6Q==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+
+  '@fortawesome/ember-fontawesome@file:ember-fontawesome':
+    resolution: {directory: ember-fontawesome, type: directory}
+    peerDependencies:
+      '@fortawesome/fontawesome-svg-core': ^6.6.0
+      '@glimmer/component': '>= 1.1.2'
+      '@glimmer/tracking': ^1.1.2
+      ember-source: ^3.28.0 || ^4.0.0 || >=5.0.0
 
   '@fortawesome/fontawesome-common-types@6.7.1':
     resolution: {integrity: sha512-gbDz3TwRrIPT3i0cDfujhshnXO9z03IT1UKRIVi/VEjpNHtSBIP2o5XSm+e816FzzCFEzAxPw09Z13n20PaQJQ==}
@@ -7818,6 +7829,16 @@ snapshots:
       - supports-color
 
   '@eslint/js@8.57.1': {}
+
+  '@fortawesome/ember-fontawesome@file:ember-fontawesome(@fortawesome/fontawesome-svg-core@6.7.1)(@glimmer/component@2.0.0)(@glimmer/tracking@1.1.2)(ember-source@5.12.0(@glimmer/component@2.0.0)(@glint/template@1.5.0)(rsvp@4.8.5)(webpack@5.96.1))':
+    dependencies:
+      '@embroider/addon-shim': 1.9.0
+      '@fortawesome/fontawesome-svg-core': 6.7.1
+      '@glimmer/component': 2.0.0
+      '@glimmer/tracking': 1.1.2
+      ember-source: 5.12.0(@glimmer/component@2.0.0)(@glint/template@1.5.0)(rsvp@4.8.5)(webpack@5.96.1)
+    transitivePeerDependencies:
+      - supports-color
 
   '@fortawesome/fontawesome-common-types@6.7.1': {}
 

@@ -25,6 +25,11 @@
     "test": "concurrently \"pnpm:lint\" \"pnpm:test:*\" --names \"lint,test:\"",
     "test:ember": "ember test"
   },
+  "dependenciesMeta": {
+    "@fortawesome/ember-fontawesome": {
+      "injected": true
+    }
+  },
   "devDependencies": {
     "@babel/core": "^7.26.0",
     "@ember/optional-features": "^2.2.0",
